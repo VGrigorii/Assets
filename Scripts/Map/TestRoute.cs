@@ -60,11 +60,13 @@ public class TestRoute : MonoBehaviour
         result = new Vector2[_countSteps];
         _listSteps.CopyTo(result);
         //----------------------------------------------------- Test -------------------------------------------------------------
+        /*
         foreach (var item in RouteOptimization(result))
         {
             GameObject closed = Instantiate(gameObj);
             closed.transform.position = new Vector3(item.x, 0, item.y);
         }
+        */
         //------------------------------------------------------------------------------------------------------------------------
         return RouteOptimization(result);
     }
@@ -304,8 +306,8 @@ public class TestRoute : MonoBehaviour
                                 listCellFree.Add(around);
                                 
                                 //------------------------------------------------------------ test --------------------------------------------
-                                GameObject closed = Instantiate(test);
-                                closed.transform.position = new Vector3(around.x * _mapCells.size + _mapCells.size/2, 0, around.y * _mapCells.size + _mapCells.size/2);
+                                // GameObject closed = Instantiate(test);
+                                // closed.transform.position = new Vector3(around.x * _mapCells.size + _mapCells.size/2, 0, around.y * _mapCells.size + _mapCells.size/2);
                                 //--------------------------------------------------------------------------------------------------------------
                                 
                                 continue;

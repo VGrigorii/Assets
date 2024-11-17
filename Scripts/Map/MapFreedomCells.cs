@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class MapFreedomCells : MonoBehaviour
 {    
@@ -74,3 +74,4 @@ public class MapFreedomCells : MonoBehaviour
         }
     }
 }
+*/

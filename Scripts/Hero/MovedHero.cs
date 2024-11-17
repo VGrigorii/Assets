@@ -1,10 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MovedHero : MonoBehaviour
 {
     [SerializeField] private Selection _selection;
     [SerializeField] private Camera _camera;
-    private GameObject _selected;
+    private List<GameObject> _selected = new List<GameObject>();
     
 
     private void OnEnable() 
@@ -15,7 +16,7 @@ public class MovedHero : MonoBehaviour
     {
         _selection.Choose -= Selected;
     }
-    private void Selected(GameObject choose)
+    private void Selected(List<GameObject> choose)
     {
         _selected = choose;
     }
@@ -23,14 +24,19 @@ public class MovedHero : MonoBehaviour
     void Update()
     {
         if(_selected == null)return;
-        if(Input.GetButtonDown("Fire2") && _selected.transform.gameObject.tag == "Hero")
+        if(Input.GetButtonDown("Fire2")) 
         {
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
             {
-                _selected.transform.gameObject.GetComponent<Hero>().Move(hit.point);                
+                foreach (var item in _selected)
+                {
+                    if(item.transform.gameObject.tag == "Hero")
+                    {
+                        item.transform.gameObject.GetComponent<Hero>().Move(hit.point);                
+                    }
+                }                
             }
-            //Debug.Log("MovedHero  " + _selected.transform.gameObject.name + "  " + Input.mousePosition);
         }
     }
 }

@@ -6,11 +6,11 @@ public class MapCells : MonoBehaviour
 //------------------------------------------------ test -----------------------------------------------------------------
 [SerializeField] private GameObject close;
 //-------------------------------------------------------------------------------------------------------------------------
+    [SerializeField] public float size {get; private set;} = 0.2f; // размер ячейки
     private bool[, ] _mapFreedomCells; // Карта ячеек (свободны или заняты)
     private int [, ] _mapStepsCells; // карта значений шагов от стартовой до финишной позиции
     public int _quantityCellsWidth {get; private set;} // Количество ячеек по ширине
     public int _quantityCellsHight {get; private set;}  // Количество ячеек по высоте
-    public float size {get; private set;} = 0.4f; // размер ячейки
 
     private void Start() 
     {
@@ -35,8 +35,8 @@ public class MapCells : MonoBehaviour
                     CloseCell(new Coords(i,j));
 
                     //------------------------------------------------------------ test --------------------------------------------
-                        GameObject closed = Instantiate(close);
-                        closed.transform.position = new Vector3(i * size + size/2, 0, j * size + size/2);
+                        //GameObject closed = Instantiate(close);
+                        //closed.transform.position = new Vector3(i * size + size/2, 0, j * size + size/2);
                     //--------------------------------------------------------------------------------------------------------------
                 }
                 else 
